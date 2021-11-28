@@ -44,21 +44,19 @@ public class CompraCliente {
 
             }while (!opcion2.equals("1"));
 
-            String numeroFactura = asignarNumeroFactura();
 
-            Factura factura = new Factura(listaProductos,cliente1,numeroFactura);
-            System.out.println(factura.getTotalCompra());
-            System.out.println(factura.calcularTotalFactura());
-            System.out.println(factura.getTotalCompra());
+
+            Factura factura = new Factura(listaProductos,cliente1);
+            //System.out.println(factura.getTotalCompra());
+            //System.out.println(factura.calcularTotalFactura());
+            //System.out.println(factura.getTotalCompra());
+            System.out.println(factura);
+
+            System.out.println("ingrese 1 para generar factura o 2 para salir");
+            opcion = lector.readLine();
 
         }
     }
 
-    public static  String asignarNumeroFactura(){
-
-        String numero = UUID.randomUUID().toString();
-
-        return  numero;
-    }
 
 }

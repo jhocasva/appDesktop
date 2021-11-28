@@ -9,10 +9,11 @@ public class Factura {
     private Cliente cliente;
     private String numeroFactura;
 
-    public Factura( List<Producto> listaProductos, Cliente cliente,String numeroFactura) {
+    public Factura( List<Producto> listaProductos, Cliente cliente) {
         this.listaProductos = listaProductos;
         this.cliente = cliente;
-        this.numeroFactura = numeroFactura;
+        this.numeroFactura = asignarNumeroFactura();
+        this.totalCompra = calcularTotalFactura();
     }
 
     public String getNumeroFactura() {
@@ -47,12 +48,18 @@ public class Factura {
 
     @Override
     public String toString() {
-        return "Factura{" +
-                "totalCompra=" + totalCompra +
-                ", listaProductos=" + listaProductos +
-                ", cliente=" + cliente +
-                ", numeroFactura=" + numeroFactura +
-                '}';
+        String encabezado = " numero factura: " + numeroFactura + "\n";
+        String acumuladorProductos = "";
+        String totalCompra = "el total es : " +  this.totalCompra;
+        String raya = "________________________________________________" + "\n";
+        String dueno = "factura a nombre de: " + cliente.getNombre() +"    " + cliente.getCedula() + "\n";
+        String encabezadoProductos = "producto cantidad pUnitario pTotal"+ "\n";
+
+        for(Producto producto : listaProductos){
+           acumuladorProductos = acumuladorProductos + producto.getNombre()+"    " + producto.getCantidad() + "    " + producto.getPrecio() + "    " + producto.calcularPrecioTotalProducto() + "\n";
+        }
+        String facturaString = encabezado + dueno +  encabezadoProductos + acumuladorProductos + raya +  totalCompra;
+        return facturaString ;
     }
 
     public float calcularTotalFactura(){
@@ -70,10 +77,12 @@ public class Factura {
 
     }
 
-    public void asignarNumeroFactura(){
+    public String asignarNumeroFactura(){
 
         String numero = UUID.randomUUID().toString();
-        numeroFactura  = String.valueOf(numero);
+
+
+        return numero;
 
 
 

@@ -5,7 +5,7 @@ public class EmpleadosEjecutables {
         String codigoEmpleo = "0987";
         String cargo = "jefe";
         Vacio vacio1;
-        
+
         Empleado empleado1 = new Empleado("pedro","1234",codigoEmpleo,"supervisor");
         Empleado empleado2 = new Empleado(nombre,cedula,codigoEmpleo, "jefe");
         Empleado empleado3 = new Empleado("carlos",cedula,codigoEmpleo, "jefe");
